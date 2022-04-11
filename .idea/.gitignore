@@ -1,3 +1,6 @@
 # Default ignored files
 /shelf/
 /workspace.xml
+# .streamlit/secrets.toml
+
+public_gsheets_url = "https://docs.google.com/spreadsheets/d/1rp2joJMbM8UtGa6jqnq0XBfhCmi3cG-BhMbUdL26pqE/edit?usp=sharing"
