@@ -117,9 +117,9 @@ if selected=="Home":
                 s.ehlo()
                 s.starttls()
                 s.ehlo()
-                --------------Changed for security reasons---------------------
-                s.login('sender mail id','sender mail password')
-                ---------------------------------------------------------------
+#                 --------------Changed for security reasons---------------------
+#                 s.login('sender mail id','sender mail password')
+#                 ---------------------------------------------------------------
                 message = "This is a message from Sinhgad college Security. Your vehicle is parked at a wrong position. Please contact College security as soon as possible on 020-XXXXXX"
                 s.sendmail("dhairyashil.ghatage31@gmail.com", row.email.strip(), message)
                 st.info("Mail Sent")
