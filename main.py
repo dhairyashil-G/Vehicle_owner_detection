@@ -89,45 +89,46 @@ if selected=="Home":
             clean_plate = clean_plate + ch
     st.info(f'Vehicle number : {clean_plate.upper()}')
 
-
+    enter=st.button(label="Enter")
     # Print results.
-    for row in rows:
-        # st.write(f"{row.Name} has a :{row.VehicleNumberPlate}:")
-        if (str(row.Vehicle_Number_Plate) == clean_plate.upper()):
-            st.success("Record Found...")
-            st.text(f"Name : {row.Name}")
-            st.text(f"Phone : {int(row.Mobile)}")
-            st.text(f"Email : {(row.email)}")
-            st.text(f"Entry time : {row.Timestamp}")
-            st.text(f"College Name : {row.College_Name}")
-            st.info("You can send a text message to the owner by clicking the button below.")
+    if(Enter):
+        for row in rows:
+            # st.write(f"{row.Name} has a :{row.VehicleNumberPlate}:")
+            if (str(row.Vehicle_Number_Plate) == clean_plate.upper()):
+                st.success("Record Found...")
+                st.text(f"Name : {row.Name}")
+                st.text(f"Phone : {int(row.Mobile)}")
+                st.text(f"Email : {(row.email)}")
+                st.text(f"Entry time : {row.Timestamp}")
+                st.text(f"College Name : {row.College_Name}")
+                st.info("You can send a text message to the owner by clicking the button below.")
 
-            # Sending text message on phone using textbelt not working in our country(India)
-            # if st.button("Send Message"):
-            #     num="+91"+str(int(row.Mobile))
-            #     resp = requests.post('https://textbelt.com/text', {
-            #         'phone': num,
-            #         'message': 'This is a message from Sinhgad college Security. Your vehicle is parked at a wrong position. Please contact College security as soon as possible on 020-XXXXXX',
-            #         'key': 'textbelt',
-            #     })
-            #     st.write(resp.json())
+                # Sending text message on phone using textbelt not working in our country(India)
+                # if st.button("Send Message"):
+                #     num="+91"+str(int(row.Mobile))
+                #     resp = requests.post('https://textbelt.com/text', {
+                #         'phone': num,
+                #         'message': 'This is a message from Sinhgad college Security. Your vehicle is parked at a wrong position. Please contact College security as soon as possible on 020-XXXXXX',
+                #         'key': 'textbelt',
+                #     })
+                #     st.write(resp.json())
 
-            if st.button("Send Mail"):
-                s = smtplib.SMTP('smtp.gmail.com', 587)
-                s.ehlo()
-                s.starttls()
-                s.ehlo()
-#                 --------------Changed for security reasons---------------------
-#                 s.login('sender mail id','sender mail password')
-#                 ---------------------------------------------------------------
-                message = "This is a message from Sinhgad college Security. Your vehicle is parked at a wrong position. Please contact College security as soon as possible on 020-XXXXXX"
-                s.sendmail("dhairyashil.ghatage31@gmail.com", row.email.strip(), message)
-                st.info("Mail Sent")
-                s.quit()
+                if st.button("Send Mail"):
+                    s = smtplib.SMTP('smtp.gmail.com', 587)
+                    s.ehlo()
+                    s.starttls()
+                    s.ehlo()
+    #                 --------------Changed for security reasons---------------------
+    #                 s.login('sender mail id','sender mail password')
+    #                 ---------------------------------------------------------------
+                    message = "This is a message from Sinhgad college Security. Your vehicle is parked at a wrong position. Please contact College security as soon as possible on 020-XXXXXX"
+                    s.sendmail("dhairyashil.ghatage31@gmail.com", row.email.strip(), message)
+                    st.info("Mail Sent")
+                    s.quit()
 
-            break
-    else:
-        st.error("No Record Found...")
+                break
+        else:
+            st.error("No Record Found...")
 
 elif selected=="Feedback":
     # st.write("This is Feedback section")
