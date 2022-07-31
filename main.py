@@ -91,7 +91,7 @@ if selected=="Home":
 
     enter=st.button(label="Enter")
     # Print results.
-    if(Enter):
+    if(enter):
         for row in rows:
             # st.write(f"{row.Name} has a :{row.VehicleNumberPlate}:")
             if (str(row.Vehicle_Number_Plate) == clean_plate.upper()):
